@@ -1,0 +1,18 @@
+"export-plot data (NetLogo 6.1.1)"
+"neoNoLIP_grating.nlogo"
+"12/01/2021 09:44:27:249 +0100"
+
+"MODEL SETTINGS"
+"slopeo_damping","gxcor","nxcor","asignalstrength","carriersignal","ydir","signal6","margin_size","kycor","rycor","rr","coloringactivation","sine","kxcor","osignalstrength","signal12","rxcor","activationdifference","esignalstrength","carriersignalstrength","hycor","showeegelectrode","range_lower","carrier_neighbour2","hxcor","lesions","oxcor","u","sigmoid_ising","nsignalstrength","uncorrelated_input","eycor","lycor","lxcor","sxcor","signal19","iycor","ersxcor","uncorrelated","signal13","ixcor","ni_slopev","dsignalstrength","signal5","signal17","mycor","neighbourintegration","mxcor","txcor","bycor","firesignalstrength","bursts_on","signal1","bxcor","msignalstrength","uncorrelated3_slopevdamping","csignalstrength","ro","fycor","uncorrelated4_slopeo","input_neighbour_activation2","eegx","uycor","ur","lsignalstrength","uxcor","gsignalstrength","uncorrelated5_damping","cycor","einpendeln","ul","inputsignalstrength","r","cxcor","jxcor","nextneighbour","uncorrelated3_slopev","tresholdsizelesions","l","neighbourintegration2","usignalstrength","gycor","ll","signal14","ksignalstrength","ratio_transmitted_energy","fsignalstrength","signal4","radiuseeg","signal16","ni_slopeo","input_neighbour_activation","oo","sine_carrier","xdir","dycor","signal10","sigmoid","generate-ising-on","tsignalstrength","dxcor","jsignalstrength","signal2","uu","aycor","oycor","axcor","vycor","slope_influence","vxcor","casignalstrength","ssignalstrength","showmeaelectrode","eegy","o","sycor","excor","ratio_neighbour_activation","carrier_for_all_input","generate-spontaneousactivity-on","uncorrelated1","spontaneousact","damping","ersxcor2","signal7","showlabels","ersycor","signal9","signal21","slopev_damping","ratio_inhibition_activation1","finish","signal3","signal15","isignalstrength","margincolor","temperature","tycor","uncorrelated4_slopeodamping","signal11","neighbourintegration1","ersycor2","rsignalstrength","backgroundcolors","auspendeln","ol","hsignalstrength","qycor","qxcor","uncorrelated2","ratio_activatedcells","marginextradamping","fxcor","vsignalstrength","carriersignal2","qsignalstrength","showlesions","color_activation_all","jycor","bsignalstrength","casignalstrength2","signal18","carrier_neighbour1","signal8","signal20","regular","range_upper","nycor"
+"0.01","93","7","89","20","50","300","0","-14","43","1","500","true","21","98","230","2","0","106","0","56","true","10.001","47","97","0","9","1","true","98","0","95","37","24","-21","90","-22","50","0","130","66","2.6655","102","150","30","54","1","14","-11","120","100","true","50.01","100","95","0","98","1","77","0","4","0","1","1","100","1","103","0","100","0","1","500","1","120","86","0","0","13","1","0","100","13","1","280","100","1","101","250","20","20","1","4","1","true","50","115","480","false","false","100","-9","100","200","1","123","-5","-17","28","1","41","100","99","true","0","1","10","22","1","true","false","0","100","1.0E-4","50","250","false","50","380","450","0","1","10006100","100","10","100","119","4","-10","0","80","1","50","99","25","1000","1","100","51","-30","0","0.01","2","105","100","42","96","false","true","81","100","100","36","0","400","420","false","1300","34"
+
+"""EEG Signal5"""
+"x min","x max","y min","y max","autoplot?","current pen","legend open?","number of pens"
+"0","10","0","10","true","""EEGplot5""","false","1"
+
+"pen name","pen down?","mode","interval","color","x"
+"""EEGplot5""","true","0","1","0","0"
+
+"""EEGplot5"""
+"x","y","color","pen down?"
+"0","0","0","true"

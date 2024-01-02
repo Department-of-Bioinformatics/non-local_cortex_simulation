@@ -1,0 +1,139 @@
+% Create a list of the tables of interest
+% Get all variables in the workspace
+workspaceVars = who;
+
+% Initialize arrays to store matched names and corresponding integer values
+matchedNames = {};
+integerValues = [];
+
+% Iterate over each variable in the workspace
+for i = 1:numel(workspaceVars)
+    varName = workspaceVars{i};
+    
+    % Check if the variable name matches the pattern
+    match = sscanf(varName, 'permuted_matrix_%d');
+    
+    if ~isempty(match)
+        % Add the matched name to the array
+        matchedNames{end+1} = varName;
+        
+        % Add the corresponding integer value to the array
+        integerValues(end+1) = match;
+    end
+end
+
+% Sort the arrays based on the integer values
+[sortedValues, sortIndices] = sort(integerValues);
+sortedNames = matchedNames(sortIndices);
+
+% Display the sorted names and corresponding integer values
+for i = 1:numel(sortedNames)
+    fprintf('%s: %d\n', sortedNames{i}, sortedValues(i));
+end
+
+
+% convert 2D into 3D matrix (originla simulation) and simulte a bigger electrode recording
+for i = 1:length(sortedNames)
+
+    % Example 3D matrix
+    %matrix_3d = permuted_matrix;  % Replace with your own 3D matrix
+    matrix_3d = eval(strjoin(sortedNames(i)));
+
+    % Parameters
+    circle_radius = 2;  % Radius of the circular area
+    stride = 2;  % Stride for moving the circular areas
+
+    % Calculate the number of circular areas in the X and Y directions
+    num_areas_x = floor((size(matrix_3d, 1) - 2*circle_radius) / stride) + 1;
+    num_areas_y = floor((size(matrix_3d, 2) - 2*circle_radius) / stride) + 1;
+
+    % Initialize the new matrix
+    new_matrix = zeros(num_areas_x, num_areas_y, size(matrix_3d, 3));
+
+    % Compute the average over circular areas in the X and Y directions for each Z
+    for k = 1:size(matrix_3d, 3)
+        for i = 1:num_areas_x
+            for j = 1:num_areas_y
+                % Compute the circular area indices in the X and Y directions
+                x_indices = (i-1)*stride + (1:2*circle_radius+1);
+                y_indices = (j-1)*stride + (1:2*circle_radius+1);
+                
+                % Extract the square region from the original matrix for each Z
+                square_region = matrix_3d(x_indices, y_indices, k);
+                
+                % Create a circular mask within the square region
+                [X, Y] = meshgrid(1:size(square_region, 2), 1:size(square_region, 1));
+                center = circle_radius + 1;
+                mask = sqrt((X - center).^2 + (Y - center).^2) <= circle_radius;
+                
+                % Compute the average of the values within the circular area
+                avg_value = mean(square_region(mask));
+                
+                % Store the average value in the new matrix
+                new_matrix(i, j, k) = avg_value;
+            end
+        end
+    end
+
+    % Display the new matrix
+    disp(size(new_matrix));
+    variableName = ['new_matrix_', num2str(i)];
+    assignin('base', variableName, permuted_matrix);
+
+
+    %% convert into 2D matrix
+    % Example 3D matrix
+    %matrix_3d = rand(17, 17, 6097);  % Replace with your own 3D matrix
+    new_matrix_3d = new_matrix;
+
+    % Get the size of the original matrix
+    [rows, cols, depth] = size(new_matrix_3d);
+
+    % Reshape the matrix into a 2D matrix
+    matrix_2d = reshape(new_matrix_3d, rows * cols, depth);
+
+    % Display the size of the new matrix
+    disp(size(matrix_2d));
+    variableName = ['matrix_2d_', num2str(i)];
+    assignin('base', variableName, permuted_matrix);
+end
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% bin
+% Example 3D matrix
+matrix_3d = rand(10, 10, 10);  % Replace with your own 3D matrix
+
+% Parameters
+circle_radius = 2;  % Radius of the circular area
+stride = 1;  % Stride for moving the circular areas
+
+% Calculate the number of circular areas in the Z-direction
+num_areas_z = floor((size(matrix_3d, 3) - 2*circle_radius) / stride) + 1;
+
+% Initialize the new matrix
+new_matrix = zeros(size(matrix_3d, 1), size(matrix_3d, 2), num_areas_z);
+
+% Compute the average over circular areas along the Z-direction
+for k = 1:num_areas_z
+    % Compute the circular area indices along the Z-direction
+    z_indices = (k-1)*stride + (1:2*circle_radius+1);
+    
+    % Extract the circular area from the original matrix
+    circular_area = matrix_3d(:, :, z_indices);
+    
+    % Compute the average of the circular area along the Z-direction
+    avg_values = mean(circular_area, 3);
+    
+    % Store the average values in the new matrix
+    new_matrix(:, :, k) = avg_values;
+end
+
+% Display the new matrix
+disp(new_matrix);
