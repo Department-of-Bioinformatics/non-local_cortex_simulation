@@ -1,7 +1,9 @@
 # non-local_cortex_simulation
 The simulation tests the electrophysiology of the cortex can be modeled by a particular non-local energy exchange field based on an oscilator network
 
+We built up a reductionistic neuronal network model. In the model, microcircuits with an inhibitory feedback architecture represent the basic processing unit. By implementing lateral connections between neighboring microcircuits, we simulated the connectivity between the nodes of the neuronal network. Exploiting the advances in power for large-scale grid computing allowed us to apply simple rules to a scalable, large simulation of network dynamics. By this building principle, always the same frequency-coded information, modulated in a wave-like fashion through the lateral connections, reaches all participating columns and creates a holistic representation of the processed information. We show that a high number of interconnected microcircuits is essential for stable processing of a high information content. Importantly, we can demonstrate that the model creates oscillatory activity patterns like those observed in in vivorecordings of the visual cortex of humans and monkeys in a visual perception paradigm.
 
+Here is now detailed information on our unique "beyond local" Cortex simulation including details on set-up, parameters and a tutorial to use the simulation.
 
 #
 # Tutorial: The "non-local brain" simulation
